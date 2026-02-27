@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   EnviroPay — Electric Mint Design System
+   Mint + Navy + Gold + Lime
+   ═══════════════════════════════════════════ */
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-outfit);
+  --font-drama: var(--font-lora);
+  --font-data: var(--font-ibm-plex-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-surface: var(--surface);
+  --color-dark: var(--dark);
+  --color-mint: var(--mint);
+  --color-lime: var(--lime);
+
+  --shadow-premium: 0 4px 32px -8px rgb(0 0 0 / 0.1);
+  --shadow-float: 0 16px 48px -12px rgb(0 0 0 / 0.15);
+  --shadow-glow-mint: 0 0 40px -10px var(--mint);
+  --shadow-glow-accent: 0 0 40px -10px var(--accent);
+
+  --radius-lg: 2rem;
+  --radius-md: 1.5rem;
+  --radius-sm: 1rem;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 8s ease-in-out infinite;
+}
+
+/* ─── Token Definitions ─── */
+:root {
+  /* Electric Mint Palette */
+  --background: #F0F4F8;
+  --foreground: #1C1C1C;
+  --primary: #00C9A7;
+  --primary-foreground: #0B132B;
+  --accent: #D4A855;
+  --accent-foreground: #0B132B;
+  --muted: #E2E8F0;
+  --muted-foreground: #64748B;
+  --border: #CBD5E1;
+  --card: #FFFFFF;
+  --card-foreground: #1C1C1C;
+  --surface: #FFFFFF;
+  --dark: #0B132B;
+  --mint: #00C9A7;
+  --lime: #A8E10C;
+}
+
+/* ─── Base Styles ─── */
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* ─── Global Noise Overlay ─── */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display), sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Micro-Interactions
+   ═══════════════════════════════════════════ */
+
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.03);
+}
+
+.btn-magnetic:active {
+  transform: scale(0.97);
+}
+
+.link-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
+}
+
+.link-lift:hover {
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════
+   Keyframes
+   ═══════════════════════════════════════════ */
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes progress {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.animate-progress {
+  animation: progress 3s linear;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes light-sweep {
+  0% {
+    transform: translateX(-100%) translateY(100%) rotate(-45deg);
+  }
+
+  100% {
+    transform: translateX(200%) translateY(-200%) rotate(-45deg);
+  }
+}
+
+.animate-light-sweep {
+  animation: light-sweep 8s ease-in-out infinite;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mint);
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: color-mix(in srgb, var(--mint) 20%, transparent);
+  color: var(--dark);
+}
