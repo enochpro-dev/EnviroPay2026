@@ -128,15 +128,16 @@ export function ContactSection() {
 
         try {
             // 1. PRIMARY: Submit to Firestore (source of truth)
+            // Firestore rejects `undefined` — only include fields that have values
             await submitLead({
                 type: leadType,
                 persona: data.persona,
                 email: data.email,
-                name: data.name || undefined,
-                message: data.message || undefined,
-                company: data.company || undefined,
-                role: data.role || undefined,
                 source,
+                ...(data.name ? { name: data.name } : {}),
+                ...(data.message ? { message: data.message } : {}),
+                ...(data.company ? { company: data.company } : {}),
+                ...(data.role ? { role: data.role } : {}),
             });
 
             // 2. SECONDARY: Submit to Formspree (notifications — fire-and-forget)
