@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import { Star, MessageSquare, Heart, Recycle, ThumbsUp, ArrowUp, Send, ChevronLeft, ChevronRight, Info } from "lucide-react";
 import { useState, useEffect } from "react";
+import { submitLead } from "@/lib/firebase";
+import { submitToFormspree } from "@/lib/formspree";
 
 // Curated Review Data
 const REVIEWS = [
@@ -16,10 +18,10 @@ const REVIEWS = [
     },
     {
         id: 2,
-        type: "image",
-        src: "/images/consumer-app-lifestyle.png",
-        alt: "Recycling bag full of bottles",
-        height: "h-64"
+        user: "EcoWarrior_2025",
+        highlight: "I've been hauling bottles to the supermarket for years. The idea of scanning at home and dropping off at a local point? Total no-brainer.",
+        icon: Recycle,
+        upvotes: 167
     },
     {
         id: 3,
@@ -45,10 +47,11 @@ const REVIEWS = [
     },
     {
         id: 6,
-        type: "image",
-        src: "/images/origin-story.png",
-        alt: "Community recycling",
-        height: "h-80"
+        user: "PlanetPenny",
+        highlight: "My kids love the idea of seeing how much plastic they've saved. If this becomes a family challenge feature... instant download.",
+        icon: Heart,
+        rating: 5,
+        upvotes: 276
     },
     {
         id: 7,
@@ -189,9 +192,6 @@ function MarqueeColumn({ items, speed, className }: { items: any[], speed: numbe
     );
 }
 
-// Formspree endpoint
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xwvenypr";
-
 function FeedbackCard() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -203,26 +203,34 @@ function FeedbackCard() {
 
         const form = e.currentTarget;
         const formData = new FormData(form);
-
-        // Add metadata
-        formData.append("_subject", "[EnviroPay] Quick Feedback Card Submission");
-        formData.append("persona", "feedback_card");
+        const message = formData.get("message") as string;
+        const email = formData.get("email") as string;
 
         try {
-            const response = await fetch(FORMSPREE_ENDPOINT, {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "Accept": "application/json",
-                },
+            // 1. PRIMARY: Submit to Firestore
+            await submitLead({
+                type: "contact",
+                persona: "consumer",
+                email: email || "anonymous@feedback.enviropay.uk",
+                message: message,
+                source: "feedback_card",
             });
 
-            if (response.ok) {
-                setIsSubmitted(true);
-                setLikes(likes + 1);
-                form.reset();
-                setTimeout(() => setIsSubmitted(false), 5000);
-            }
+            // 2. SECONDARY: Submit to Formspree for email notification
+            submitToFormspree({
+                name: "Feedback Card",
+                email: email || "anonymous@feedback.enviropay.uk",
+                persona: "consumer",
+                type: "contact",
+                message: message,
+                source: "feedback_card",
+                _subject: "[EnviroPay] Quick Feedback Card Submission",
+            });
+
+            setIsSubmitted(true);
+            setLikes(likes + 1);
+            form.reset();
+            setTimeout(() => setIsSubmitted(false), 5000);
         } catch (error) {
             console.error("Feedback submission error:", error);
         } finally {

@@ -14,41 +14,44 @@ const firebaseConfig = {
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 const db = getFirestore(app);
 
+export type LeadType = "contact" | "waitlist";
+export type LeadPersona = "consumer" | "retailer" | "partner";
+export type LeadSource = "contact_form" | "hero_cta" | "get_involved" | "audience_section" | "feedback_card";
+
 export interface LeadData {
-    type: "contact" | "waitlist";
-    persona?: "consumer" | "retailer" | "partner";
+    type: LeadType;
+    persona: LeadPersona;
     email: string;
     name?: string;
     message?: string;
-    theme?: string; // which theme was active
-    [key: string]: any;
+    company?: string;
+    role?: string;
+    source: LeadSource;
 }
 
-export async function submitLead(data: LeadData) {
-    try {
-        // Basic Rate Limit Check (Mock - in real app would be server side or robust)
-        const recent = sessionStorage.getItem("last_submission");
-        if (recent && Date.now() - parseInt(recent) < 10000) {
-            throw new Error("Please wait a moment before sending another message.");
-        }
-
-        // Honeypot check should happen before calling this function
-
-        await addDoc(collection(db, "leads"), {
-            ...data,
-            timestamp: serverTimestamp(),
-            userAgent: navigator.userAgent,
-        });
-
-        sessionStorage.setItem("last_submission", Date.now().toString());
-        return { success: true };
-    } catch (error) {
-        console.error("Firebase write error:", error);
-        // Return mock success if config is missing (for demo purposes if user hasn't set env)
-        if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
-            console.warn("Firebase config missing, simulating success");
-            return { success: true, simulated: true };
-        }
-        throw error;
+/**
+ * Submit a lead to Firestore `leads` collection.
+ * 
+ * Rate-limits to 1 submission per 10 seconds (client-side via sessionStorage).
+ * Firestore rules validate: email (string), type ('contact' | 'waitlist'), timestamp (present).
+ */
+export async function submitLead(data: LeadData): Promise<{ success: true }> {
+    // Client-side rate limiting
+    const recent = sessionStorage.getItem("ep_last_submission");
+    if (recent && Date.now() - parseInt(recent) < 10000) {
+        throw new Error("Please wait a moment before sending another message.");
     }
+
+    if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
+        throw new Error("Firebase configuration is missing. Contact support.");
+    }
+
+    await addDoc(collection(db, "leads"), {
+        ...data,
+        timestamp: serverTimestamp(),
+        userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "unknown",
+    });
+
+    sessionStorage.setItem("ep_last_submission", Date.now().toString());
+    return { success: true };
 }

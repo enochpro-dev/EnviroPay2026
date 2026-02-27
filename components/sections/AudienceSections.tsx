@@ -327,7 +327,7 @@ export function AudienceSections() {
 
                         {/* CTA */}
                         <div className="mt-12">
-                            <a href="#contact" className="btn-magnetic inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold bg-white text-[#F97316] shadow-lg hover:shadow-xl text-lg">
+                            <a href="#contact-consumer" className="btn-magnetic inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold bg-white text-[#F97316] shadow-lg hover:shadow-xl text-lg">
                                 Join the Waitlist
                                 <ArrowRight size={20} strokeWidth={3} />
                             </a>
@@ -389,7 +389,7 @@ export function AudienceSections() {
                             </div>
 
                             <div className="mt-10">
-                                <a href="#contact" className="btn-magnetic inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold bg-[#D4A855] text-[#0B132B] hover:bg-[#C49A48] shadow-lg text-lg">
+                                <a href="#contact-retailer" className="btn-magnetic inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold bg-[#D4A855] text-[#0B132B] hover:bg-[#C49A48] shadow-lg text-lg">
                                     Talk to us about a pilot
                                     <ArrowRight size={20} strokeWidth={3} />
                                 </a>
@@ -532,7 +532,7 @@ export function AudienceSections() {
                                                 <p className="text-white/50 leading-relaxed">{active.desc}</p>
                                             </div>
                                             <a
-                                                href="#contact"
+                                                href="#contact-partner"
                                                 className="btn-magnetic inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm border border-white/10 text-white/70 hover:border-[#A8E10C]/40 hover:text-[#A8E10C] transition-all shrink-0"
                                             >
                                                 Learn more
@@ -553,7 +553,7 @@ export function AudienceSections() {
                         </Accordion>
                     </div>
 
-                    <a href="#contact" className="btn-magnetic inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg border-2 border-[#A8E10C] text-[#A8E10C] hover:bg-[#A8E10C] hover:text-[#070D1F] hover:shadow-[0_0_30px_-5px_#A8E10C] transition-all">
+                    <a href="#contact-partner" className="btn-magnetic inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg border-2 border-[#A8E10C] text-[#A8E10C] hover:bg-[#A8E10C] hover:text-[#070D1F] hover:shadow-[0_0_30px_-5px_#A8E10C] transition-all">
                         Partner or Invest with EnviroPay
                         <ArrowRight size={20} strokeWidth={3} />
                     </a>

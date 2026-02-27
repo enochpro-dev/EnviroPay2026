@@ -1,0 +1,18 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Leads collection - allow anonymous writes (contact form), no reads
+    match /leads/{leadId} {
+      allow create: if request.resource.data.keys().hasAll(['email', 'type', 'timestamp'])
+                    && request.resource.data.email is string
+                    && request.resource.data.type in ['contact', 'waitlist'];
+      allow read, update, delete: if false;
+    }
+
+    // Deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

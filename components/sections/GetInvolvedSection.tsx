@@ -156,7 +156,7 @@ export function GetInvolvedSection() {
 
                                         {/* CTA */}
                                         <a
-                                            href="#contact"
+                                            href={`#contact-${tier.name.toLowerCase()}`}
                                             className={`btn-magnetic group flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm transition-all ${tier.featured
                                                 ? "bg-gradient-to-r from-[#A8E10C] to-[#00C9A7] text-[#0B132B] shadow-lg hover:shadow-[0_4px_24px_-4px_rgba(168,225,12,0.4)]"
                                                 : "bg-white/10 text-white/90 hover:bg-white/15 border border-white/15"
