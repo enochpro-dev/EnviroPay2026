@@ -46,8 +46,13 @@ export async function submitLead(data: LeadData): Promise<{ success: true }> {
         throw new Error("Firebase configuration is missing. Contact support.");
     }
 
+    // Strip undefined values — Firestore rejects them
+    const cleanData = Object.fromEntries(
+        Object.entries(data).filter(([, v]) => v !== undefined)
+    );
+
     await addDoc(collection(db, "leads"), {
-        ...data,
+        ...cleanData,
         timestamp: serverTimestamp(),
         userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "unknown",
     });
