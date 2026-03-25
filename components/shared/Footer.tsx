@@ -42,9 +42,9 @@ const FOOTER_LINKS = {
         { label: "Partners & Investors", href: "#partners" },
     ],
     Connect: [
-        { label: "LinkedIn", href: "#", external: true },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/enviropayuk/", external: true },
         { label: "Instagram", href: "#", external: true },
-        { label: "Info@EnviroPay.com", href: "mailto:info@enviropay.com" },
+        { label: "Info@EnviroPay.uk", href: "mailto:info@enviropay.uk" },
     ],
 };
 
@@ -311,7 +311,7 @@ export function Footer() {
                     {/* ─── Bottom Bar ─── */}
                     <div className="border-t border-white/[0.04] pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-xs text-white/15 font-[family-name:var(--font-ibm-plex-mono)]">
-                            © 2025 EnviroPay Ltd. All rights reserved.
+                            © {new Date().getFullYear()} EnviroPay Ltd. All rights reserved.
                         </p>
                         <p className="text-xs text-white/10 font-[family-name:var(--font-ibm-plex-mono)] italic tracking-wide">
                             A world free from waste.
