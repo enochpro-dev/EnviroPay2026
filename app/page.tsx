@@ -20,11 +20,11 @@ export default function Home() {
         {/* Hero — "The Opening Shot" */}
         <HeroSection />
 
-        {/* Features — "Interactive Functional Artifacts" */}
-        <FeaturesSection />
-
-        {/* Protocol — "How EnviroPay Works" */}
+        {/* Protocol — "EnviroPay Mobile App" */}
         <ProtocolSection />
+
+        {/* Features — "How EnviroPay Works" */}
+        <FeaturesSection />
 
         {/* Philosophy — "The Manifesto" */}
         <PhilosophySection />

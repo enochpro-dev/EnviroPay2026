@@ -7,7 +7,7 @@ import { Clock, Target, Eye, Plus, Minus, Cpu, Zap, ArrowRight, ArrowLeft } from
 
 gsap.registerPlugin(ScrollTrigger);
 
-function AnimNum({ value, suffix }: { value: number; suffix: string }) {
+function AnimNum({ value, suffix, prefix = "" }: { value: number; suffix: string; prefix?: string }) {
     const ref = React.useRef<HTMLSpanElement>(null);
     React.useEffect(() => {
         const el = ref.current;
@@ -19,11 +19,11 @@ function AnimNum({ value, suffix }: { value: number; suffix: string }) {
             ease: "power3.out",
             scrollTrigger: { trigger: el, start: "top 85%" },
             onUpdate: () => {
-                el.textContent = Math.round(obj.val).toLocaleString() + suffix;
+                el.textContent = prefix + Math.round(obj.val).toLocaleString() + suffix;
             },
         });
-    }, [value, suffix]);
-    return <span ref={ref}>0{suffix}</span>;
+    }, [value, suffix, prefix]);
+    return <span ref={ref}>{prefix}0{suffix}</span>;
 }
 
 export function WhySection() {
@@ -99,20 +99,21 @@ export function WhySection() {
                         {
                             icon: Target,
                             title: "The gap",
-                            desc: "The experience has to be easy. The rewards need to be instant — or people won't adopt at scale.",
+                            desc: "Billions in deposits still processed via paper vouchers, printed receipts and cash payout machines.",
                             accent: "#D4A855",
-                            num: 73,
-                            numLabel: "% want easier returns",
-                            numSuffix: "%",
+                            num: 6,
+                            numLabel: "circulating deposits",
+                            numSuffix: "B+",
+                            numPrefix: "£",
                         },
                         {
                             icon: Eye,
                             title: "The vision",
                             desc: "Make recycling feel as normal as buying a drink: simple, rewarding, and built into daily life.",
                             accent: "#A8E10C",
-                            num: 4700,
-                            numLabel: "M containers / year",
-                            numSuffix: "M",
+                            num: 30,
+                            numLabel: "B+ containers / year",
+                            numSuffix: "B+",
                         },
                     ].map((item, i) => (
                         <div
@@ -122,7 +123,7 @@ export function WhySection() {
                         >
                             {/* Number */}
                             <div className="text-5xl md:text-6xl font-bold font-[family-name:var(--font-outfit)] mb-4 tracking-tight" style={{ color: item.accent }}>
-                                <AnimNum value={item.num} suffix={item.numSuffix || ""} />
+                                <AnimNum value={item.num} suffix={item.numSuffix || ""} prefix={item.numPrefix || ""} />
                             </div>
                             <p className="text-[10px] font-[family-name:var(--font-ibm-plex-mono)] text-white/40 uppercase tracking-widest mb-6">{item.numLabel}</p>
 

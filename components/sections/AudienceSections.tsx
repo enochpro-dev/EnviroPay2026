@@ -9,6 +9,7 @@ import {
     TrendingUp, Users, Globe, Leaf, QrCode, MapPin, PiggyBank
 } from "lucide-react";
 import { Accordion } from "@/components/shared/Accordion";
+import { MiniEnviroMap } from "@/components/shared/EnviroMap";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,7 +45,7 @@ function AnimatedStat({ value, suffix = "", prefix = "", label }: { value: numbe
     return (
         <div className="text-center">
             <span ref={ref} className="text-4xl md:text-5xl font-bold font-[family-name:var(--font-outfit)] text-white tracking-tight">
-                {prefix}{displayed.toLocaleString()}{suffix}
+                {prefix}{value > 0 ? displayed.toLocaleString() : ""}{suffix}
             </span>
             <p className="text-white/40 text-sm mt-2 font-[family-name:var(--font-ibm-plex-mono)] uppercase tracking-wider">{label}</p>
         </div>
@@ -82,46 +83,9 @@ function MiniWallet() {
 }
 
 /* ═══════════════════════════════════════════════════
-   MINI MAP — animated dots for return points
+   MINI MAP — Mapbox GL interactive EnviroPoint map
+   (Imported from components/shared/EnviroMap.tsx)
    ═══════════════════════════════════════════════════ */
-function MiniMap() {
-    return (
-        <div className="bg-white/15 backdrop-blur-md rounded-2xl p-5 border border-white/20 relative overflow-hidden w-full aspect-square">
-            <div className="text-xs font-[family-name:var(--font-ibm-plex-mono)] text-white/40 uppercase tracking-wider mb-3">Return Points Near You</div>
-            {/* Fake map grid */}
-            <div className="absolute inset-4 top-10">
-                <div className="w-full h-full relative">
-                    {/* Grid lines */}
-                    {Array.from({ length: 5 }).map((_, i) => (
-                        <div key={`h${i}`} className="absolute left-0 right-0 border-t border-white/5" style={{ top: `${i * 25}%` }} />
-                    ))}
-                    {Array.from({ length: 5 }).map((_, i) => (
-                        <div key={`v${i}`} className="absolute top-0 bottom-0 border-l border-white/5" style={{ left: `${i * 25}%` }} />
-                    ))}
-                    {/* Animated dots */}
-                    {[
-                        { top: '20%', left: '30%', delay: '0s' },
-                        { top: '45%', left: '60%', delay: '0.5s' },
-                        { top: '70%', left: '25%', delay: '1s' },
-                        { top: '35%', left: '80%', delay: '1.5s' },
-                        { top: '60%', left: '50%', delay: '0.8s' },
-                    ].map((dot, i) => (
-                        <div key={i} className="absolute" style={{ top: dot.top, left: dot.left }}>
-                            <div className="relative">
-                                <div className="w-3 h-3 rounded-full bg-[#FACC15] animate-ping absolute" style={{ animationDelay: dot.delay }} />
-                                <div className="w-3 h-3 rounded-full bg-[#FACC15]" />
-                            </div>
-                        </div>
-                    ))}
-                    {/* User dot */}
-                    <div className="absolute top-[50%] left-[45%]">
-                        <div className="w-4 h-4 rounded-full bg-[#D4A855] border-2 border-white shadow-lg" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
 
 /* ═══════════════════════════════════════════════════
    RETAILER DASHBOARD — mock KPI panel
@@ -301,7 +265,7 @@ export function AudienceSections() {
 
                             {/* Map tile — spans 2 cols */}
                             <div data-bento-tile className="col-span-2">
-                                <MiniMap />
+                                <MiniEnviroMap />
                             </div>
 
                             {/* Impact tile */}
@@ -320,9 +284,9 @@ export function AudienceSections() {
 
                         {/* Stats bar */}
                         <div className="grid grid-cols-3 gap-8 mt-16 pt-12 border-t border-white/30">
-                            <AnimatedStat value={20} prefix="£0." suffix="" label="Per Container" />
-                            <AnimatedStat value={500} suffix="+" label="Return Points" />
-                            <AnimatedStat value={3} suffix="s" label="To Cash Out" />
+                            <AnimatedStat value={20} prefix="£0." suffix="" label="Proposed Deposit" />
+                            <AnimatedStat value={1000} suffix="+" label="Return Points" />
+                            <AnimatedStat value={0} prefix="Instant" suffix="" label="Wallet Credit" />
                         </div>
 
                         {/* CTA */}
@@ -472,10 +436,10 @@ export function AudienceSections() {
                     {/* Market Signal Stats */}
                     <div data-partner-item className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
                         {[
-                            { icon: CircleDollarSign, stat: "£1.6B", label: "UK DRS Market Size", accent: "#A8E10C" },
+                            { icon: CircleDollarSign, stat: "£6B+", label: "Circulating Deposits", accent: "#A8E10C" },
                             { icon: TrendingUp, stat: "2027", label: "UK DRS Launch Year", accent: "#A8E10C" },
-                            { icon: Users, stat: "67M", label: "UK Population", accent: "#D4A855" },
-                            { icon: Leaf, stat: "4.7B", label: "Containers / Year", accent: "#A8E10C" },
+                            { icon: Users, stat: "70M", label: "UK Population", accent: "#D4A855" },
+                            { icon: Leaf, stat: "30B+", label: "Containers / Year", accent: "#A8E10C" },
                         ].map((s) => (
                             <div key={s.label} className="bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all group">
                                 <s.icon size={20} style={{ color: s.accent }} className="mb-4 group-hover:scale-110 transition-transform" />

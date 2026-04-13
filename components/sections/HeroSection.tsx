@@ -103,20 +103,24 @@ export function HeroSection() {
 
                 {/* CTA */}
                 <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 mb-10">
-                    <button
-                        onClick={() => scrollToSection("get-involved")}
-                        className="btn-magnetic group px-8 py-3.5 rounded-full font-bold text-base flex items-center justify-center gap-3 shadow-lg bg-gradient-to-r from-[#67E8F9] to-[#2563EB] text-white"
-                    >
-                        Join the Waitlist
-                        <ArrowRight size={18} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
                     <a
-                        href="#how-it-works"
-                        onClick={(e) => { e.preventDefault(); scrollToSection("how-it-works"); }}
+                        href="https://testflight.apple.com/join/CuDYXJPz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-magnetic group px-8 py-3.5 rounded-full font-bold text-base flex items-center justify-center gap-3 shadow-lg bg-gradient-to-r from-[#67E8F9] to-[#2563EB] text-white hover:shadow-[0_0_32px_rgba(37,99,235,0.4)] transition-shadow duration-300"
+                    >
+                        <svg width="18" height="22" viewBox="0 0 18 22" fill="currentColor" className="shrink-0">
+                            <path d="M13.04 4.62c.82-1.05 1.37-2.51 1.22-3.97-1.18.05-2.61.83-3.46 1.87-.76.92-1.43 2.4-1.25 3.82 1.32.1 2.67-.71 3.49-1.72zM14.28 11.16c-.02-2.34 1.87-3.47 1.96-3.52-1.07-1.6-2.74-1.82-3.33-1.85-1.42-.15-2.77.86-3.49.86-.72 0-1.83-.84-3.01-.82-1.55.02-2.98.93-3.78 2.36-1.61 2.85-.41 7.08 1.16 9.39.77 1.14 1.69 2.42 2.9 2.37 1.16-.05 1.6-.77 3-.77s1.8.77 3.02.74c1.25-.02 2.04-1.16 2.8-2.31.88-1.32 1.25-2.6 1.27-2.67-.03-.01-2.44-.96-2.5-3.78z"/>
+                        </svg>
+                        Download on TestFlight
+                        <ArrowRight size={18} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <button
+                        onClick={() => scrollToSection("contact")}
                         className="btn-magnetic px-8 py-3.5 rounded-full font-bold text-base flex items-center justify-center gap-3 text-white/80 border border-white/15 hover:bg-white/5 hover:text-white"
                     >
-                        See How It Works
-                    </a>
+                        Get in Touch
+                    </button>
                 </div>
 
                 {/* Trust line */}

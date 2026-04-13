@@ -24,7 +24,7 @@ const HOTSPOTS = [
         icon: TreePine,
         label: "Reduced Landfill",
         stat: "91%",
-        description: "of plastic is never recycled. DRS systems have achieved deposit return rates above 90% in every country that adopts them.",
+        description: "of plastic is never recycled. DRS systems have achieved return rates above 90% in countries like Germany, Lithuania and Ireland.",
         position: { top: "15%", left: "75%" },
         positionMobile: { top: "32%", left: "78%" },
         color: "#10B981",

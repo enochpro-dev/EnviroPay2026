@@ -44,7 +44,7 @@ const FOOTER_LINKS = {
     Connect: [
         { label: "LinkedIn", href: "https://www.linkedin.com/company/enviropayuk/", external: true },
         { label: "Instagram", href: "#", external: true },
-        { label: "Info@EnviroPay.uk", href: "mailto:info@enviropay.uk" },
+        { label: "Hello@EnviroPay.uk", href: "mailto:hello@enviropay.uk" },
     ],
 };
 
