@@ -35,7 +35,7 @@ const PERSONAS = [
 
 function getSubmitLabel(persona: LeadPersona): string {
     switch (persona) {
-        case "consumer": return "Join Waitlist";
+        case "consumer": return "Try the Beta";
         case "retailer": return "Partner With Us";
         case "partner": return "Get in Touch";
     }

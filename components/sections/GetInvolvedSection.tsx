@@ -18,7 +18,7 @@ const TIERS = [
             "Withdraw to your bank or donate",
             "Track your environmental impact",
         ],
-        cta: "Join Waitlist",
+        cta: "Try the Beta",
         featured: false,
     },
     {

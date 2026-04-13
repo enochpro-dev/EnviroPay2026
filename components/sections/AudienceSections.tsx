@@ -291,8 +291,8 @@ export function AudienceSections() {
 
                         {/* CTA */}
                         <div className="mt-12">
-                            <a href="#contact-consumer" className="btn-magnetic inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold bg-white text-[#F97316] shadow-lg hover:shadow-xl text-lg">
-                                Join the Waitlist
+                            <a href="https://testflight.apple.com/join/CuDYXJPz" target="_blank" rel="noopener noreferrer" className="btn-magnetic inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold bg-white text-[#F97316] shadow-lg hover:shadow-xl text-lg">
+                                Try the Beta
                                 <ArrowRight size={20} strokeWidth={3} />
                             </a>
                         </div>
