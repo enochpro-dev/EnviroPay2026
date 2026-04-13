@@ -197,8 +197,9 @@ export function Header() {
 
                 {/* CTA — section-aware gradient / animated at footer */}
                 <a
-                    href="#contact"
-                    onClick={(e) => scrollToSection(e, "contact")}
+                    href="https://testflight.apple.com/join/CuDYXJPz"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={cn(
                         "btn-magnetic flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-glow-mint whitespace-nowrap transition-all duration-500",
                         !isAtFooter && activeTheme.gradient,
@@ -206,7 +207,7 @@ export function Header() {
                     )}
                     style={isAtFooter ? animatedCTAStyle : undefined}
                 >
-                    Join Waitlist
+                                Try the Beta
                 </a>
             </header>
 
@@ -264,8 +265,9 @@ export function Header() {
                         ))}
                         <div className="mt-4">
                             <a
-                                href="#contact"
-                                onClick={(e) => scrollToSection(e, "contact")}
+                                href="https://testflight.apple.com/join/CuDYXJPz"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className={cn(
                                     "btn-magnetic flex items-center justify-center w-full px-4 py-4 rounded-full text-lg font-bold shadow-lg transition-all duration-500",
                                     !isAtFooter && activeTheme.gradient,
@@ -273,7 +275,7 @@ export function Header() {
                                 )}
                                 style={isAtFooter ? animatedCTAStyle : undefined}
                             >
-                                Join Waitlist
+                                            Try the Beta
                             </a>
                         </div>
                     </div>

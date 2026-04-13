@@ -50,3 +50,8 @@ env:
     availability:
       - BUILD
       - RUNTIME
+  - variable: NEXT_PUBLIC_MAPBOX_TOKEN
+    secret: NEXT_PUBLIC_MAPBOX_TOKEN
+    availability:
+      - BUILD
+      - RUNTIME
