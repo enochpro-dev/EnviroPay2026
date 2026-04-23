@@ -19,7 +19,7 @@ function AnimNum({ value, suffix, prefix = "" }: { value: number; suffix: string
             ease: "power3.out",
             scrollTrigger: { trigger: el, start: "top 85%" },
             onUpdate: () => {
-                el.textContent = prefix + Math.round(obj.val).toLocaleString() + suffix;
+                el.textContent = prefix + Math.round(obj.val) + suffix;
             },
         });
     }, [value, suffix, prefix]);
