@@ -65,11 +65,6 @@ export function PartnershipSectionVariant0() {
             id="partnership-v0"
             className="relative py-24 lg:py-32 overflow-hidden bg-white"
         >
-            {/* Review label */}
-            <div className="absolute top-0 left-0 bg-[#0B132B] text-white font-bold px-5 py-1.5 rounded-br-xl z-50 text-xs tracking-wider">
-                VARIANT 0 · ORIGINAL
-            </div>
-
             {/* Ticker keyframe */}
             <style dangerouslySetInnerHTML={{
                 __html: `@keyframes v0-ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } } @keyframes v0-ticker-r { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } } .v0-ticker-track { animation: v0-ticker 50s linear infinite; } .v0-ticker-track-r { animation: v0-ticker-r 58s linear infinite; }`
