@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -9,7 +10,12 @@ import {
     TrendingUp, Users, Globe, Leaf, QrCode, MapPin, PiggyBank
 } from "lucide-react";
 import { Accordion } from "@/components/shared/Accordion";
-import { MiniEnviroMap } from "@/components/shared/EnviroMap";
+
+// Mapbox GL uses browser-only APIs — must be excluded from SSR to prevent hydration mismatch (#418)
+const MiniEnviroMap = dynamic(
+    () => import("@/components/shared/EnviroMap").then((m) => ({ default: m.MiniEnviroMap })),
+    { ssr: false }
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
