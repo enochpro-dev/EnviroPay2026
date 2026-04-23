@@ -173,15 +173,15 @@ export function PartnershipSectionVariant0() {
                             </div>
                         </div>
 
-                        {/* £6-8B stat */}
+                        {/* UK's First */}
                         <div className="rounded-[2rem] p-7 flex flex-col justify-between overflow-hidden relative bg-white border border-[rgba(15,23,42,0.06)] shadow-sm">
                             <div className="relative z-10">
-                                <p className="text-[10px] font-bold text-[#64748B] uppercase tracking-widest mb-1 font-[family-name:var(--font-ibm-plex-mono)]">DRS 2027 Market Scale</p>
-                                <h3 className="text-5xl font-bold font-[family-name:var(--font-outfit)] tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0B132B] to-[#334155]">£6–8B</h3>
-                                <p className="text-[#475569] font-medium mt-1 text-sm">in circulating deposits annually.</p>
+                                <p className="text-[10px] font-bold text-[#00C9A7] uppercase tracking-widest mb-2 font-[family-name:var(--font-ibm-plex-mono)]">Live RVM Integration</p>
+                                <h3 className="text-4xl font-bold font-[family-name:var(--font-outfit)] tracking-tight text-[#0B132B] leading-tight">UK's<br />first.</h3>
+                                <p className="text-[#475569] font-medium mt-2 text-sm leading-relaxed">Digital payment integration with a live RVM partner.</p>
                             </div>
                             <div className="h-2 w-full rounded-full overflow-hidden bg-[#F1F5F9] mt-5 relative z-10">
-                                <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-[#00C9A7] to-[#A8E10C]" />
+                                <div className="h-full w-full rounded-full bg-gradient-to-r from-[#00C9A7] to-[#A8E10C]" />
                             </div>
                         </div>
 
