@@ -3,7 +3,10 @@
 import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
-// import { FeaturesSection } from "@/components/sections/FeaturesSection";
+import { PartnershipSectionVariant0 } from "@/components/sections/PartnershipSectionVariant0";
+// import { PartnershipSectionVariant1 } from "@/components/sections/PartnershipSectionVariant1";
+// import { PartnershipSectionVariant2 } from "@/components/sections/PartnershipSectionVariant2";
+
 import { PhilosophySection } from "@/components/sections/PhilosophySection";
 import { WhySection } from "@/components/sections/WhySection";
 import { ProtocolSection } from "@/components/sections/ProtocolSection";
@@ -23,11 +26,14 @@ export default function Home() {
         {/* Protocol — "EnviroPay Mobile App" */}
         <ProtocolSection />
 
-        {/* Features — "How EnviroPay Works" — hidden */}
-        {/* <FeaturesSection /> */}
-
         {/* Philosophy — "The Manifesto" */}
         <PhilosophySection />
+
+        {/* --- DESIGN ITERATIONS FOR REVIEW --- */}
+        <PartnershipSectionVariant0 />
+        {/* <PartnershipSectionVariant1 /> */}
+        {/* <PartnershipSectionVariant2 /> */}
+        {/* ------------------------------------ */}
 
         {/* Audience Sections — For Consumers, Retailers, Partners */}
         <AudienceSections />
@@ -47,5 +53,3 @@ export default function Home() {
     </div>
   );
 }
-
-

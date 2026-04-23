@@ -80,7 +80,6 @@ export function Footer() {
             gsap.from(payLetters, {
                 y: 120,
                 opacity: 0,
-                rotateX: -40,
                 duration: 1.2,
                 stagger: 0.08,
                 ease: "power4.out",
@@ -237,7 +236,6 @@ export function Footer() {
                                                 className="inline-block text-white/90 transition-transform duration-300 group-hover:translate-y-[-6px]"
                                                 style={{
                                                     transitionDelay: `${i * 40}ms`,
-                                                    transform: `translateY(${i * 0.12}em)`,
                                                     marginLeft: kern ? `${kern}em` : undefined,
                                                 }}
                                             >

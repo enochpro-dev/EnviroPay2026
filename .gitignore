@@ -29,3 +29,4 @@ next-env.d.ts
 
 # Antigravity
 .antigravityignore
+firebase-debug.log
