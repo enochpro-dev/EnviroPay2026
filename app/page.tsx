@@ -3,7 +3,7 @@
 import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { FeaturesSection } from "@/components/sections/FeaturesSection";
+// import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { PhilosophySection } from "@/components/sections/PhilosophySection";
 import { WhySection } from "@/components/sections/WhySection";
 import { ProtocolSection } from "@/components/sections/ProtocolSection";
@@ -23,8 +23,8 @@ export default function Home() {
         {/* Protocol — "EnviroPay Mobile App" */}
         <ProtocolSection />
 
-        {/* Features — "How EnviroPay Works" */}
-        <FeaturesSection />
+        {/* Features — "How EnviroPay Works" — hidden */}
+        {/* <FeaturesSection /> */}
 
         {/* Philosophy — "The Manifesto" */}
         <PhilosophySection />
